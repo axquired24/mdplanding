@@ -16,6 +16,12 @@
     }
   </style>
 </head>
+
+<?php
+  ini_set('display_errors', 1);
+  error_reporting(E_ALL|E_STRICT);
+  include('config-mdp.php');
+?>
 <body>
   <div id="header-section" class="header wrapper">
     <div class="ui grid">
@@ -59,7 +65,7 @@
   <div id="news-section" class="green bg">
     <div class="ui divsection container">
         <div class="ui centered white text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt amet labore blanditiis repellat ratione consequuntur et, fugiat, rem, facere sit vel! Quas fugit accusamus, id sint, quasi facilis quam temporibus.
+          <?php echo $text['sub-text-atas']; ?>
       </div>
     </div>
   </div>
@@ -72,84 +78,36 @@
         Produk <br> <small>Produk unggulan dan populer saat ini</small>
       </h2>
       <div class="ui two column stackable grid">
+        <?php foreach($products as $product){ ?>
         <!-- Start Column -->
         <div class="column">
           <div class="ui raised segment">
             <div class="ui stackable grid">
               <div class="five wide column">
-                <img src="images/produk/sample.jpg" alt="Sample Produk" class="ui fluid image">
+                <img src="images/produk/<?php echo $product['image_path'];?>" alt="<?php echo $product['name'];?>" class="ui fluid image">
               </div>
               <div class="eleven wide column">
-                <h3 class="ui caption header">X-Banner</h3>
-                Spesifikasi banner, ukuran, bahan, design.
+                <h3 class="ui caption header"><?php echo $product['name'];?></h3>
+                <?php echo $product['description'];?>
                 <hr>
-                <a href="javascript:" class="ui right floated inverted green product button">Rp 50.xxx</a>
+                <a href="javascript:" class="ui right floated inverted green button"><?php echo $product['price'];?></a>
               </div>
             </div>
           </div>
         </div>
         <!-- End Column -->
-        <!-- Start Column -->
-        <div class="column">
-          <div class="ui raised segment">
-            <div class="ui stackable grid">
-              <div class="five wide column">
-                <img src="images/produk/sample.jpg" alt="Sample Produk" class="ui fluid image">
-              </div>
-              <div class="eleven wide column">
-                <h3 class="ui caption header">X-Banner</h3>
-                Spesifikasi banner, ukuran, bahan, design.
-                <hr>
-                <a href="javascript:" class="ui right floated inverted green product button">Rp 50.xxx</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End Column -->
-        <!-- Start Column -->
-        <div class="column">
-          <div class="ui raised segment">
-            <div class="ui stackable grid">
-              <div class="five wide column">
-                <img src="images/produk/sample.jpg" alt="Sample Produk" class="ui fluid image">
-              </div>
-              <div class="eleven wide column">
-                <h3 class="ui caption header">X-Banner</h3>
-                Spesifikasi banner, ukuran, bahan, design.
-                <hr>
-                <a href="javascript:" class="ui right floated inverted green product button">Rp 50.xxx</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End Column -->
-        <!-- Start Column -->
-        <div class="column">
-          <div class="ui raised segment">
-            <div class="ui stackable grid">
-              <div class="five wide column">
-                <img src="images/produk/sample.jpg" alt="Sample Produk" class="ui fluid image">
-              </div>
-              <div class="eleven wide column">
-                <h3 class="ui caption header">X-Banner</h3>
-                Spesifikasi banner, ukuran, bahan, design.
-                <hr>
-                <a href="javascript:" class="ui right floated inverted green product button">Rp 50.xxx</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End Column -->
+      <?php } //endforeach; ?>
       </div>
     </div>
     <!-- END container -->
 
-    <div class="ui grid" style="margin-bottom: -6em">
+    <!-- Sementara di disable -->
+    <!-- <div class="ui grid" style="margin-bottom: -6em">
       <div class="ui center aligned column">
         <br>
         <a href="javascript:" class="ui green centered huge related button">Produk Lainnya</a>
       </div>
-    </div>
+    </div> -->
     <!-- End centered grid column -->
   </div>
   <!-- END Product Section -->
@@ -159,7 +117,7 @@
   <div class="yellow bg">
     <div class="ui divsection container">
         <div class="ui centered white text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt amet labore blanditiis repellat ratione consequuntur et, fugiat, rem, facere sit vel! Quas fugit accusamus, id sint, quasi facilis quam temporibus.
+          <?php echo $text['sub-text-bawah']; ?>
       </div>
     </div>
   </div>
@@ -171,7 +129,7 @@
       <div class="ui stackable center aligned grid">
         <div class="ten wide column">
           <h2 class="ui header">Cara Kerja <br><small>Lihat bagaimana kami memudahkan kebutuhan digital printing anda.</small></h2>
-          <img src="images/howto.jpg" alt="" class="ui fluid image" width="300px">
+          <img src="images/how-to-order.jpeg" alt="Cara Kerja" class="ui fluid image" width="300px">
         </div>
       </div>
     </div>
@@ -223,9 +181,9 @@
           </div>
           <br>
           <div class="ui inverted horizontal icon link list">
-            <a href="#" class="item noblock"><i class="facebook square icon"></i></a>
-            <a href="#" class="item noblock"><i class="instagram icon"></i></a>
-            <a href="#" class="item noblock"><i class="twitter icon"></i></a>
+            <a href="<?php echo $socialmedia['facebook']; ?>" class="item noblock"><i class="facebook square icon"></i></a>
+            <a href="<?php echo $socialmedia['instagram']; ?>" class="item noblock"><i class="instagram icon"></i></a>
+            <a href="<?php echo $socialmedia['twitter']; ?>" class="item noblock"><i class="twitter icon"></i></a>
           </div>
         </div>
       </div>
@@ -234,7 +192,7 @@
   <!-- END Footer -->
 
   <!-- Modal Section -->
-  <div class="ui tiny modal">
+  <!-- <div class="ui tiny modal">
     <div class="header">X-Banner</div>
     <div class="scrolling content">
       <div class="ui stackable grid">
@@ -298,7 +256,7 @@
         Close
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- End Modal Section -->
 
 <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
