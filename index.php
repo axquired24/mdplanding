@@ -19,8 +19,8 @@
 
 <?php
   ini_set('display_errors', 1);
-  error_reporting(E_ALL|E_STRICT);
-  include('config-mdp.php');
+  error_reporting(E_ALL | E_STRICT);
+  include 'config-mdp.php';
 ?>
 <body>
   <div id="header-section" class="header wrapper">
@@ -78,25 +78,27 @@
         Produk <br> <small>Produk unggulan dan populer saat ini</small>
       </h2>
       <div class="ui two column stackable grid">
-        <?php foreach($products as $product){ ?>
+        <?php foreach ($products as $product) {
+    ?>
         <!-- Start Column -->
         <div class="column">
           <div class="ui raised segment">
             <div class="ui stackable grid">
               <div class="five wide column">
-                <img src="images/produk/<?php echo $product['image_path'];?>" alt="<?php echo $product['name'];?>" class="ui fluid image">
+                <img src="images/produk/<?php echo $product['image_path']; ?>" alt="<?php echo $product['name']; ?>" class="ui fluid image">
               </div>
               <div class="eleven wide column">
-                <h3 class="ui caption header"><?php echo $product['name'];?></h3>
-                <?php echo $product['description'];?>
+                <h3 class="ui caption header"><?php echo $product['name']; ?></h3>
+                <?php echo $product['description']; ?>
                 <hr>
-                <a href="javascript:" class="ui right floated inverted green button"><?php echo $product['price'];?></a>
+                <a href="javascript:" class="ui right floated inverted green button"><?php echo $product['price']; ?></a>
               </div>
             </div>
           </div>
         </div>
         <!-- End Column -->
-      <?php } //endforeach; ?>
+      <?php
+} //endforeach;?>
       </div>
     </div>
     <!-- END container -->
